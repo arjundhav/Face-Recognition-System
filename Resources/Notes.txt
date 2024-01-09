@@ -1,0 +1,8 @@
+TO install libraries: pip install -r requirements.txt
+Need to install models: pip install git+https://github.com/ageitgey/face_recognition_models
+                        pip show face_recognition_models                        #for verifying
+
+
+We need Visual Studio for C++ for the library we are using
+EncodeGenerator FIle: We are going to encode ll the faces from webcam for face recognition.
+
