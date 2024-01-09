@@ -1,15 +1,18 @@
 import pandas as pd
 from datetime import datetime,timedelta
 import pyodbc
-from decouple import config  # Importing the function from decouple.py
+import os
+from dotenv import load_dotenv
+load_dotenv()   # Loading the .env file
 
 try:
+    # Connect to MS SQL Server database
     connection_string = (
-        'DRIVER=' + config('driver') + ';'
-        'SERVER=' + config('server') + ';'
-        'DATABASE=' + config('database') + ';'
-        'UID=' + config('username') + ';'
-        'PWD=' + config('password')
+            'DRIVER=' + os.getenv('driver') + ';'
+            'SERVER=' + os.getenv('server') + ';'
+            'DATABASE=' + os.getenv('database') + ';'
+            'UID=' + os.getenv('username') + ';'
+            'PWD=' + os.getenv('password')
     )
 
     connection = pyodbc.connect(connection_string) # Creating a connection
