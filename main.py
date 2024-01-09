@@ -8,6 +8,9 @@ from decouple import config  # Importing the function from decouple.py
 from sqlDB import insert_record # Importing the function from sqlDbCon.py
 import pyodbc
 from datetime import datetime
+from dotenv import load_dotenv
+load_dotenv()   # Loading the .env file
+
 
 cap = cv2.VideoCapture(0)
 cap.set(3, 640)
@@ -31,11 +34,11 @@ encodeListKnown, studentIds = encodeListKnownWithIds
 
 # Connect to MS SQL Server database
 connection_string = (
-        'DRIVER=' + config('driver') + ';'
-        'SERVER=' + config('server') + ';'
-        'DATABASE=' + config('database') + ';'
-        'UID=' + config('username') + ';'
-        'PWD=' + config('password')
+        'DRIVER=' + os.getenv('driver') + ';'
+        'SERVER=' + os.getenv('server') + ';'
+        'DATABASE=' + os.getenv('database') + ';'
+        'UID=' + os.getenv('username') + ';'
+        'PWD=' + os.getenv('password')
 )
 
 connection = pyodbc.connect(connection_string) # Creating a connection
